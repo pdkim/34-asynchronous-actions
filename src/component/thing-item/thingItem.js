@@ -1,7 +1,7 @@
-import {Component, Fragment} from 'react';
+import React, {Component, Fragment} from 'react';
 import {Route, Link} from 'react-router-dom';
 
-import ThingUpdate from '../thing-update/thingUpdate.js';
+import ThingUpdateForm from '../thing-update/thingUpdate.js';
 
 export default class ThingItem extends Component {
 

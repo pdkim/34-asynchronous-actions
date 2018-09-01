@@ -29,7 +29,9 @@ class ThingContainer extends Component {
   }
 }
 
-const matchStateToProps = state => ({things: state.things});
+const mapStateToProps = state => {
+  return {things: state.thingState}
+};
 
 const mapDispatchToProps = dispatch => ({
   fetchThings: () => dispatch(fetchThings()),
@@ -38,4 +40,4 @@ const mapDispatchToProps = dispatch => ({
   deleteThunk: thing => dispatch(deleteThunk(thing))
 });
 
-export default connect(matchStateToProps, mapDispatchToProps)(ThingContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ThingContainer);

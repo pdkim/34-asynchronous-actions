@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pdkim/14-relationship-modeling.git"
+    "url": "git+https://github.com/pdkim/34-asynchronous-actions.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pdkim/14-relationship-modeling/issues"
+    "url": "https://github.com/pdkim/34-asynchronous-actions/issues"
   },
-  "homepage": "https://github.com/pdkim/14-relationship-modeling#readme",
+  "homepage": "https://github.com/pdkim/34-asynchronous-actions#readme",
   "dependencies": {
     "babel-core": "^6.26.3",
     "babel-env": "^2.4.1",
