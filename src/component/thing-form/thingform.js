@@ -27,17 +27,22 @@ class ThingForm extends Component {
   }
 
   handleChange = (e) => {
-    this.setState({
-      [e.target.name] : e.target.value,
-    });
+    const val = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+
+    const changed = {
+      name: val,
+    };
+
+    this.setState(changed);
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
         <label>
           Name:
-          <input type="text" value={this.state.name} placeholder="Enter name" onChange={this.handleChange} />
+          <br/>
+          <input type="text" placeholder="Enter name" value={this.state.name} />
         </label>
         <br/>
         <button>Submit</button>

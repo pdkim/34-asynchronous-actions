@@ -1,29 +1,25 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {updateThing} from '../../actions/thing-action.js';
+import {updateThunk} from '../../actions/thing-action.js';
 
 class ThingUpdateForm extends Component {
   
   constructor(props) {
     super(props);
-    this.state = {...props.things};
+    this.state = {...this.props.thing};
   }
 
   onSubmit = e => {
     e.preventDefault();
     this.props.onDone();
-    this.props.thingUpdate(this.state);
+    this.props.updateThing(this.state);
   }
 
   onCancel = () => this.props.onCancel();
 
   onChange = e => {
     const val = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-
-    const changed = {
-      [e.target.name]: val,
-    };
-    this.setState(changed);
+    this.setState({...this.state, name: val});
   }
 
 
@@ -39,7 +35,7 @@ class ThingUpdateForm extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  thingUpdate: thing => dispatch(updateThing(thing))
+  updateThing: thing => dispatch(updateThunk(thing))
 });
 
 export default connect(null, mapDispatchToProps)(ThingUpdateForm);

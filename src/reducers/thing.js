@@ -9,7 +9,7 @@ export default function reducer(state = initialState, action) {
 
   case 'Thing/ADD': return [...state, ...payload];
 
-  case 'Thing/ADD_ALL': return [...state, ...action.payload];
+  case 'Thing/ADD_ALL': return payload;
 
   case 'Thing/UPDATE': return state.map(thing => thing.id === payload.id ? payload : thing);
 

@@ -18,7 +18,7 @@ export function addThings(things) {
 }
 
 export function deleteThing(thing) {
-  
+
   return {
     type: 'Thing/DELETE',
     payload: thing,
@@ -40,13 +40,11 @@ export function fetchThings() {
 
   return dispatch => {
 
-    // return superagent
-    //   .get(url)
     fetch(url)
       .then(function (response) {
         return response.json();
       })
-      .then(function(things) {
+      .then(function (things) {
 
         dispatch(addThings(things));
 
@@ -62,26 +60,23 @@ export function addThunk(thing) {
     return superagent
       .post(url)
       .send(thing)
-      .then(response => {
-        return response.body;
-      })
-      .then(thing => {
-        return dispatch(addThing(thing));
+      .then(() => {
+        return superagent.get(url)
+          .then(function (things) {
+            dispatch(addThings(JSON.parse(things.text)));
+          });
       });
   };
 }
 
 export function updateThunk(thing) {
-  
+
   return dispatch => {
 
     return superagent
       .put(`${url}/${thing.id}`)
       .send(thing)
-      .then(response => {
-        return response.body;
-      })
-      .then(thing => {
+      .then(() => {
         dispatch(updateThing(thing));
       });
   };
