@@ -40,11 +40,13 @@ export function fetchThings() {
 
   return dispatch => {
 
-    return superagent.get(url)
+    // return superagent
+    //   .get(url)
+    fetch(url)
       .then(function (response) {
         return response.json();
       })
-      .then(function (things) {
+      .then(function(things) {
 
         dispatch(addThings(things));
 
@@ -57,7 +59,8 @@ export function addThunk(thing) {
 
   return dispatch => {
 
-    return superagent.post(url)
+    return superagent
+      .post(url)
       .send(thing)
       .then(response => {
         return response.body;
@@ -72,7 +75,8 @@ export function updateThunk(thing) {
   
   return dispatch => {
 
-    return superagent.put(`${url}/${thing.id}`)
+    return superagent
+      .put(`${url}/${thing.id}`)
       .send(thing)
       .then(response => {
         return response.body;
@@ -87,7 +91,8 @@ export function deleteThunk(thing) {
 
   return dispatch => {
 
-    return superagent.delete(`${url}/${thing.id}`)
+    return superagent
+      .delete(`${url}/${thing.id}`)
       .then(response => {
         return response.text;
       })

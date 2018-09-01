@@ -1,5 +1,4 @@
 import React, {Component, Fragment} from 'react';
-import {Route, Link} from 'react-router-dom';
 
 import ThingUpdateForm from '../thing-update/thingUpdate.js';
 
@@ -22,14 +21,16 @@ export default class ThingItem extends Component {
 
   render() {
     if(this.state.mode === 'default') {
-      <li onDoubleClick={this.editMode}>
+      return (
+        <li onDoubleClick={this.editMode}>
         <h2>{this.props.thing.name}</h2>
-        <button onclick={() => this.props.deleteThis(this.props.thing)}>Delete</button>
-      </li>
+        <button onClick={() => this.props.deleteThis(this.props.thing)}>Delete</button>
+        </li>
+      )
     } else {
       return (
         <Fragment>
-          <ThingUpdateForm thing={this.props.thing} onCancel={this.defaultMode} OnDone={this.defaultMode} />
+          <ThingUpdateForm thing={this.props.thing} onCancel={this.defaultMode} onDone={this.defaultMode} />
         </Fragment>
       )
     }

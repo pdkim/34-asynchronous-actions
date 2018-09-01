@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {thingUpdate} from '../../actions/thing-action.js';
+import {updateThing} from '../../actions/thing-action.js';
 
 class ThingUpdateForm extends Component {
   
@@ -39,7 +39,7 @@ class ThingUpdateForm extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  thingUpdate: thing => dispatch(thingUpdate(thing))
+  thingUpdate: thing => dispatch(updateThing(thing))
 });
 
 export default connect(null, mapDispatchToProps)(ThingUpdateForm);
