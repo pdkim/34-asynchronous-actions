@@ -1,11 +1,8 @@
 
 export const validate = store => next => action => {
-  if(action.type === 'Thing/ADD') {
-    if(action.payload.name === '' || action.payload.name === null) {
-      alert('Requires a name');
-    } else {
-      return next(action);
-    }
+  if(action.type === 'Thing/UPDATE' && !action.payload.name) {
+    console.log('action payload', action.payload);
+    alert('Please enter a valid name to update');
   } else {
     next(action);
   }
