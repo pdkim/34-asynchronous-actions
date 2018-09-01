@@ -63,8 +63,7 @@ export function addThunk(thing) {
       .then(() => {
         return superagent.get(url)
           .then(function (things) {
-            console.log('things is ', things);
-            dispatch(addThing(JSON.parse(things.text)));
+            dispatch(addThings(JSON.parse(things.text)));
           });
       });
   };
